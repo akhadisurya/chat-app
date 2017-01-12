@@ -29,7 +29,7 @@ io.sockets.on('connection', function(socket){
   });
 
   //New user
-  socket.on('new user', function(callback){
+  socket.on('new user', function(data, callback){
     callback(true);
     socket.username = data;
     users.push(socket.username);
@@ -37,6 +37,6 @@ io.sockets.on('connection', function(socket){
   })
 
   function updateUsernames(){
-    io.sockets.emit('get users', usernames);
+    io.sockets.emit('get users', users);
   }
 });
